@@ -21,6 +21,7 @@ function Post(props) {
                 <meta name="twitter:image" content={pokemon.thumbnailUrl} />
             </Helmet>
             <h3>{ability}</h3>
+            <img src={pokemon.thumbnailUrl} />
             {/* <ul>
                 { pokemon.map(poke => {
                     const { pokemon } = poke;
