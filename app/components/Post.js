@@ -15,6 +15,7 @@ function Post(props) {
                 <meta name="og:title" content={pokemon.description} />
                 <meta name="og:description" content={pokemon.description} />
                 <meta name="og:image" content={pokemon.thumbnailUrl} />
+                <meta name='twitter:card' content='summary'/>
                 <meta name="twitter:title" content={pokemon.description} />
                 <meta name="twitter:description" content={pokemon.description} />
                 <meta name="twitter:image" content={pokemon.thumbnailUrl} />
