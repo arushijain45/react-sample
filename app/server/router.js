@@ -7,6 +7,7 @@ import routes from './routes';
 import renderFullPage from './renderFullPage';
 import getPokemon from '../services/getPokemon';
 import App from '../components/App';
+import Helmet from 'react-helmet';
 
 export default function router(req, res) {
 
@@ -25,15 +26,17 @@ export default function router(req, res) {
 
             const context = {}
 
-            const html = renderToString(
+            const body = renderToString(
                 <StaticRouter context={context} location={req.url} >
                     <Provider store={store}>
                       <App pokemon={pokemon}/>
                     </Provider>
                 </StaticRouter>
             )
-
-            res.status(200).send(renderFullPage(html, pokemon));
+            const helmet = Helmet.renderStatic();
+            const htmlAtt = helmet.htmlAttributes.toString();
+            const head = helmet.title.toString() + helmet.meta.toString() + helmet.link.toString();
+            res.status(200).send(renderFullPage(head, body, pokemon));
         })
         .catch(err => res.status(404).send(`${err}: Oh No! I cannot find the telepathic pokemon... maybe they knew we were coming!`));
 };
