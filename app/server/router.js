@@ -13,6 +13,11 @@ export default function router(req, res) {
 
     const match = routes.reduce((acc, route) => matchPath(req.url, { path: route, exact: true }) || acc, null);
 
+    if(req.url.indexOf('google354c0c53acaf0066') != -1){
+        res.status(200).send('google-site-verification: google354c0c53acaf0066.html');
+        return;
+    }
+
     if (!match) {
         res.status(404).send('page not found');
         return;
